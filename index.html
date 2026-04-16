@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALO 康乐优品 - 康乐主义 智享银龄</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7CB342;
+            --primary-light: #E8F5E9;
+            --primary-dark: #558B2F;
+            --bg-light: #FAF7F0;
+            --bg-warm: #F5F1E8;
+            --bg-camel: #E8DCC8;
+            --text-dark: #2a2a2a;
+            --text-gray: #555;
+            --text-light: #888;
+            --white: #ffffff;
+            --shadow-sm: 0 4px 16px rgba(0,0,0,0.06);
+            --shadow-md: 0 10px 30px rgba(0,0,0,0.08);
+            --shadow-lg: 0 20px 50px rgba(0,0,0,0.12);
+            --radius: 16px;
+            --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg-warm);
+            color: var(--text-dark);
+            line-height: 1.9;
+            overflow-x: hidden;
+        }
+
+        /* ─── Header ─── */
+        header {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            height: 80px;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 60px;
+            transition: var(--transition);
+        }
+        .logo img { height: 36px; object-fit: contain; }
+        nav ul { display: flex; list-style: none; gap: 36px; }
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            position: relative;
+            transition: var(--transition);
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; left: 0;
+            width: 0; height: 2px;
+            background: var(--primary);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+        nav a:hover { color: var(--primary); }
+        nav a:hover::after { width: 100%; }
+
+        /* ─── Hero ─── */
+        .hero {
+            height: 100vh;
+            min-height: 700px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('hero-bg.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            transform: scale(1.05);
+            transition: transform 8s ease;
+        }
+        .hero:hover .hero-bg { transform: scale(1); }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(160deg, rgba(245,241,232,0.55) 0%, rgba(250,247,240,0.75) 100%);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 960px;
+            padding: 0 40px;
+            animation: heroIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes heroIn {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hero-badge {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 6px 20px;
+            border-radius: 30px;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .hero h1 {
+            font-size: clamp(42px, 5.5vw, 80px);
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.25;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+        .hero h1 span { color: var(--primary); }
+        .hero p {
+            font-size: clamp(18px, 2vw, 26px);
+            color: var(--text-gray);
+            margin-bottom: 44px;
+            font-weight: 400;
+        }
+        .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 44px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+            letter-spacing: 0.5px;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 8px 24px rgba(124,179,66,0.35);
+        }
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 14px 36px rgba(124,179,66,0.45);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--text-dark);
+            border: 2px solid rgba(0,0,0,0.15);
+        }
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+        .scroll-hint {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            animation: bounce 2s infinite;
+            color: var(--text-light);
+            font-size: 13px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        .scroll-hint i { font-size: 24px; }
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+
+        /* ─── Section Base ─── */
+        section { padding: 60px 60px; }
+        .section-label {
+            display: inline-block;
+            background: var(--primary-light);
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 5px 16px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .section-title {
+            font-size: clamp(32px, 4vw, 52px);
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+        .section-title .accent { color: var(--primary); }
+        .section-subtitle {
+            font-size: 17px;
+            color: var(--text-gray);
+            max-width: 640px;
+            margin: 0 auto 64px;
+            line-height: 1.8;
+        }
+
+        /* ─── About ─── */
+        .about-section { background: var(--bg-light); }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 360px 1fr;
+            gap: 40px;
+            align-items: start;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .about-img-wrap {
+            position: sticky;
+            top: 120px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        .about-img-wrap img {
+            width: 100%;
+            height: 700px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+        .about-img-wrap:hover img { transform: scale(1.03); }
+        .about-cards { display: flex; flex-direction: column; gap: 16px; }
+        .card {
+            background: var(--white);
+            padding: 24px 28px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateX(30px);
+        }
+        .card.visible { opacity: 1; transform: translateX(0); }
+        .card:hover {
+            transform: translateY(-6px) !important;
+            box-shadow: var(--shadow-md);
+        }
+        .card-header { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+        .card-icon {
+            width: 48px; height: 48px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+        .card h3 { font-size: 19px; color: var(--text-dark); font-weight: 700; }
+        .card p { color: var(--text-gray); font-size: 15px; line-height: 1.85; }
+
+        /* ─── Market ─── */
+        .market-section { background: var(--white); }
+        .market-banner-wrap {
+            max-width: 1300px;
+            margin: 0 auto 28px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+        .market-banner-wrap img {
+            width: 100%; height: 300px;
+            object-fit: cover;
+            object-position: center 20%;
+            display: block;
+        }
+        .market-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .market-card {
+            background: var(--bg-light);
+            padding: 36px 32px;
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+        .market-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+        .market-card .card-header { margin-bottom: 12px; }
+        .number-highlight {
+            font-size: 40px;
+            font-weight: 800;
+            color: var(--primary);
+            display: block;
+            margin: 10px 0 4px;
+            letter-spacing: -1px;
+        }
+        .market-list { list-style: none; }
+        .market-list li {
+            position: relative;
+            padding-left: 22px;
+            margin-bottom: 14px;
+            color: var(--text-gray);
+            font-size: 15px;
+        }
+        .market-list li::before {
+            content: '•';
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+            font-size: 22px;
+            line-height: 1.4;
+        }
+
+        /* ─── Pain Points ─── */
+        .pain-section { background: var(--bg-camel); }
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .pain-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            display: flex;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        .pain-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+        .pain-side { padding: 36px 28px; flex: 1; }
+        .pain-side.left { background: #f8f6f2; border-right: 2px dashed #e0d9ce; }
+        .pain-side.right { background: var(--white); }
+        .pain-card h4 {
+            font-size: 17px;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .pain-card h4 i { color: #c0392b; font-size: 20px; }
+        .pain-side.right h4 i { color: var(--primary); }
+        .pain-card p { color: var(--text-gray); font-size: 14px; }
+        .pain-arrow {
+            position: absolute;
+            left: 50%; top: 50%;
+            transform: translate(-50%, -50%);
+            width: 38px; height: 38px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            z-index: 2;
+            flex-shrink: 0;
+        }
+        .pain-card { position: relative; }
+
+        /* ─── Core Advantages ─── */
+        .core-section { background: var(--white); }
+        .store-img-wrap {
+            max-width: 1300px;
+            margin: 0 auto 28px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        .store-img-wrap img {
+            width: 100%; height: 560px;
+            object-fit: cover;
+            display: block;
+        }
+        .vision-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            max-width: 1300px;
+            margin: 0 auto 28px;
+        }
+        .vision-card {
+            background: var(--primary-light);
+            padding: 40px 32px;
+            border-radius: var(--radius);
+            text-align: center;
+            transition: var(--transition);
+        }
+        .vision-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+        .vision-card .card-header { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+        .vision-card .card-icon {
+            width: 48px; height: 48px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        .vision-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; color: var(--text-dark); }
+        .vision-card p { color: var(--text-gray); font-size: 15px; }
+        .adv-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .adv-card {
+            background: var(--white);
+            border: 1.5px solid #eee;
+            padding: 32px 28px;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            transition: var(--transition);
+        }
+        .adv-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-light);
+        }
+        .adv-icon { font-size: 44px; color: var(--primary); flex-shrink: 0; }
+        .adv-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+        .adv-card p { color: var(--text-gray); font-size: 14px; }
+
+        /* ─── Products ─── */
+        .products-section { background: var(--bg-light); }
+        .product-nav {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            background: var(--primary-light);
+            padding: 28px 48px;
+            border-radius: var(--radius);
+            margin-bottom: 80px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .product-nav-item {
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            padding: 8px 16px;
+            border-radius: 12px;
+        }
+        .product-nav-item:hover {
+            background: rgba(124,179,66,0.15);
+        }
+        .product-nav-item i {
+            font-size: 30px;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 8px;
+            transition: var(--transition);
+        }
+        .product-nav-item:hover i { transform: scale(1.2) rotate(8deg); }
+        .product-nav-item span { font-size: 15px; font-weight: 600; color: var(--text-dark); }
+        .product-category {
+            margin-bottom: 80px;
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 48px;
+            align-items: start;
+            max-width: 1300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cat-title {
+            font-size: 34px;
+            color: var(--primary);
+            font-weight: 800;
+            position: sticky;
+            top: 120px;
+            line-height: 1.3;
+        }
+        .cat-title small {
+            display: block;
+            font-size: 15px;
+            color: var(--text-gray);
+            font-weight: 400;
+            margin-top: 8px;
+        }
+        .prod-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .prod-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        .prod-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+        .prod-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            display: block;
+        }
+        .prod-card:hover .prod-img { transform: scale(1.06); }
+        .prod-more-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            border: 2px dashed rgba(124,179,66,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            transition: var(--transition);
+        }
+        .prod-more-card:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+            transform: translateY(-4px);
+        }
+        .prod-info { padding: 22px; }
+        .prod-info h4 { font-size: 17px; font-weight: 700; margin-bottom: 8px; color: var(--text-dark); }
+        .prod-info p { color: var(--text-gray); font-size: 14px; }
+
+        .food-category {
+            background: var(--bg-warm);
+            padding: 40px;
+            border-radius: var(--radius);
+            margin-bottom: 80px;
+        }
+        .food-header {
+            background: var(--primary-light);
+            padding: 28px 32px;
+            border-radius: 12px;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .food-header .card-icon { background: white; }
+        .food-header h3 { font-size: 20px; font-weight: 700; color: var(--text-dark); }
+        .food-header p { font-size: 16px; color: var(--text-gray); margin-top: 4px; }
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .food-grid .prod-card {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .food-grid .prod-img {
+            width: 140px;
+            height: 140px;
+            object-fit: contain;
+            padding: 16px;
+            background: white;
+            border-radius: 0;
+            flex-shrink: 0;
+        }
+        .food-grid .prod-info { flex: 1; }
+        /* Walker Section - Premium Category Styling */
+        /* Walker Section - Premium Category Styling */
+        .walker-section { max-width: 1300px; margin: 0 auto; padding: 0 0 60px; position: relative; }
+        .walker-img-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+        .walker-img-grid .grid-item {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            cursor: pointer;
+            flex: 1;
+            min-width: 200px;
+            background: #f0f0f0;
+        }
+        .walker-img-grid .grid-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            transition: transform 0.4s ease, filter 0.4s ease;
+        }
+        .walker-img-grid .grid-item .grid-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 60%);
+            display: flex;
+            align-items: flex-end;
+            padding: 16px 18px;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+        .walker-img-grid .grid-item .grid-overlay span {
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .walker-img-grid .grid-item:hover img {
+            transform: scale(1.06);
+            filter: brightness(0.85);
+        }
+        .walker-img-grid .grid-item:hover .grid-overlay {
+            opacity: 1;
+        }
+        .walker-title { margin-bottom: 28px; display: flex; align-items: center; gap: 16px; }
+        .walker-title .cat-icon { display: none; }
+        .walker-title .cat-icon.ri-shirt-line    { background: #FFF3E0; color: #E65100; }
+        .walker-title .cat-icon.ri-bowl-line      { background: #E8F5E9; color: #2E7D32; }
+        .walker-title .cat-icon.ri-home-line      { background: #E3F2FD; color: #1565C0; }
+        .walker-title .cat-icon.ri-footprint-line { background: #F3E5F5; color: #6A1B9A; }
+        .walker-title h3 { font-size: 32px; color: var(--primary); font-weight: 800; letter-spacing: -0.5px; }
+        .cat-title .en-deco {
+            font-size: 68px;
+            font-weight: 900;
+            opacity: 0.06;
+            margin-left: 10px;
+            vertical-align: middle;
+            letter-spacing: 3px;
+            color: var(--primary);
+        }
+        .walker-title h3 small { display: block; font-size: 15px; font-weight: 400; color: var(--text-gray); margin-top: 2px; letter-spacing: 0; }
+        .walker-img-wrap {
+            background: white;
+            border-radius: var(--radius);
+            padding: 16px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-sm);
+        }
+        .walker-img-wrap img {
+            width: 100%; height: 280px;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* Auto-scroll Gallery */
+        .auto-scroll-gallery {
+            overflow: hidden;
+            position: relative;
+        }
+        .scroll-track {
+            display: flex;
+            gap: 20px;
+            animation: scrollLoop 20s linear infinite;
+            width: max-content;
+        }
+        .scroll-track:hover {
+            animation-play-state: paused;
+        }
+        .scroll-track img {
+            width: 400px;
+            height: 280px;
+            object-fit: contain;
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            flex-shrink: 0;
+        }
+        @keyframes scrollLoop {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .walker-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .walker-card {
+            background: white;
+            padding: 0;
+            border-radius: var(--radius);
+            border: 1.5px solid rgba(124,179,66,0.12);
+            overflow: hidden;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+        .walker-card .card-top-bar {
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+        }
+        .walker-card .card-top-bar.orange { background: linear-gradient(90deg, #FF6D00, #E65100); }
+        .walker-card .card-top-bar.green  { background: linear-gradient(90deg, #66BB6A, #2E7D32); }
+        .walker-card .card-top-bar.blue   { background: linear-gradient(90deg, #42A5F5, #1565C0); }
+        .walker-card .card-top-bar.purple { background: linear-gradient(90deg, #AB47BC, #6A1B9A); }
+        .walker-card .card-body { padding: 20px 22px 22px; flex: 1; display: flex; flex-direction: column; }
+        .walker-card .card-prod-icon {
+            width: 44px; height: 44px;
+            border-radius: 12px;
+            background: var(--primary-light);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--primary);
+            font-size: 22px;
+            margin-bottom: 14px;
+        }
+        .walker-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: transparent; }
+        .walker-card:hover .card-top-bar { background-size: 200% 100%; animation: shimmer 1s ease; }
+        .walker-card h4 { color: var(--text-dark); font-size: 17px; font-weight: 700; margin-bottom: 10px; line-height: 1.4; }
+        .walker-card p { color: var(--text-gray); font-size: 14px; line-height: 1.8; flex: 1; }
+        @keyframes shimmer {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        /* Horizontal Scroll Gallery */
+        .horizontal-scroll {
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding: 20px 10px 30px;
+            margin: 0 -10px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        .horizontal-scroll::-webkit-scrollbar { display: none; }
+        .scroll-item {
+            flex: 0 0 280px;
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            scroll-snap-align: start;
+            transition: var(--transition);
+        }
+        .scroll-item:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+        .scroll-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        .scroll-item h4 {
+            padding: 16px 20px 8px;
+            font-size: 18px;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        .scroll-item p {
+            padding: 0 20px 20px;
+            font-size: 14px;
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+        .scroll-hint-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: var(--text-light);
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .scroll-hint-row i { font-size: 20px; }
+
+        /* ─── Timeline ─── */
+        .timeline-section { background: var(--bg-light); padding-bottom: 120px; }
+        .timeline-wrap { max-width: 900px; margin: 0 auto; }
+        .timeline {
+            position: relative;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0; bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary), var(--primary-light));
+            transform: translateX(-50%);
+            border-radius: 4px;
+        }
+        .timeline-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        .timeline-item:nth-child(even) { flex-direction: row-reverse; }
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 22px; height: 22px;
+            background: var(--primary);
+            border: 5px solid var(--primary-light);
+            border-radius: 50%;
+            z-index: 2;
+            box-shadow: 0 0 0 6px rgba(124,179,66,0.15);
+        }
+        .timeline-content {
+            width: 44%;
+            background: var(--white);
+            padding: 36px 32px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        .timeline-content:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+        .timeline-date {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 14px;
+        }
+        .timeline-content p { font-size: 16px; color: var(--text-gray); line-height: 1.8; }
+        .timeline-content i { font-size: 28px; color: var(--primary); margin-bottom: 12px; display: block; }
+
+        /* ─── CTA ─── */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 100px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .cta-section * { position: relative; }
+        .cta-title { font-size: clamp(30px, 4vw, 48px); font-weight: 700; color: white; margin-bottom: 16px; }
+        .cta-sub { font-size: 18px; color: rgba(255,255,255,0.85); margin-bottom: 40px; }
+        .btn-white {
+            background: white;
+            color: var(--primary);
+            padding: 18px 56px;
+            border-radius: 50px;
+            font-size: 17px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            transition: var(--transition);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+        .btn-white:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(0,0,0,0.2); }
+
+        /* ─── Footer ─── */
+        footer {
+            background: linear-gradient(to bottom, var(--bg-camel), var(--primary-light));
+            padding: 64px 60px 40px;
+            text-align: center;
+        }
+        .footer-logo { height: 44px; margin-bottom: 28px; }
+        .social-icons { display: flex; justify-content: center; gap: 16px; margin-bottom: 36px; }
+        .social-icons a {
+            width: 42px; height: 42px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 20px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .social-icons a:hover { background: var(--primary); color: white; transform: translateY(-3px); }
+        .copyright { color: var(--text-light); font-size: 13px; }
+
+        /* ─── Animations ─── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* ─── Responsive ─── */
+        @media (max-width: 1024px) {
+            section { padding: 80px 40px; }
+            .about-grid { grid-template-columns: 1fr; }
+            .about-img-wrap { position: static; }
+            .about-img-wrap img { height: 400px; }
+            .market-grid { grid-template-columns: 1fr; }
+            .pain-grid { grid-template-columns: 1fr; }
+            .vision-grid { grid-template-columns: 1fr; }
+            .adv-grid { grid-template-columns: 1fr; }
+            .product-category { grid-template-columns: 1fr; }
+            .cat-title { position: static; }
+            .prod-grid { grid-template-columns: repeat(2, 1fr); }
+            .walker-grid { grid-template-columns: 1fr; }
+            .scroll-item { flex: 0 0 240px; }
+            .timeline-item { flex-direction: column !important; }
+            .timeline-content { width: 100%; }
+            .timeline::before { left: 20px; }
+            .timeline-dot { left: 20px; }
+        }
+        @media (max-width: 640px) {
+            header { padding: 0 24px; }
+            nav ul { gap: 20px; }
+            nav a { font-size: 13px; }
+            section { padding: 60px 20px; }
+            .prod-grid { grid-template-columns: 1fr; }
+            .food-grid { grid-template-columns: 1fr; }
+            .hero-content { padding: 0 20px; }
+            .scroll-track img { width: 280px; height: 210px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="CALO Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about">公司概况</a></li>
+                <li><a href="#market">市场分析</a></li>
+                <li><a href="#advantages">核心优势</a></li>
+                <li><a href="#products">产品矩阵</a></li>
+                <li><a href="#timeline">未来规划</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge">康乐主义 智享银龄</div>
+            <h1>创赢未来，<span>品质银龄</span></h1>
+            <p>一站式高品质老年生活生态平台 · 覆盖衣、食、住、行全场景</p>
+            <div class="hero-actions">
+                <a href="#about" class="btn btn-primary">
+                    <i class="ri-arrow-down-line"></i> 了解更多
+                </a>
+                <a href="#products" class="btn btn-outline">
+                    <i class="ri-shopping-bag-3-line"></i> 查看产品
+                </a>
+            </div>
+        </div>
+        <div class="scroll-hint">
+            <i class="ri-arrow-down-s-line"></i>
+            <span>向下滚动</span>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="about-section">
+        <div style="text-align:center; margin-bottom: 40px;">
+            <span class="section-label">About Us</span>
+            <h2 class="section-title">关于<span class="accent">康乐优品</span></h2>
+        </div>
+        <div class="about-grid">
+            <div class="about-img-wrap">
+                <img src="about-img.png" alt="幸福老年生活">
+            </div>
+            <div class="about-cards">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="ri-building-line"></i></div>
+                        <h3>康乐主义公司简介</h3>
+                    </div>
+                    <p>康乐主义公司是专注服务中老年群体的全品类品质生活服务商，以专属年龄段、高品质功能性、一站式无忧购为核心，覆盖衣、食、住、行、康、护全场景，致力于用专业好物提升长辈日常舒适与尊严，打造安心便捷的银发生活生态。</p>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="ri-shield-star-line"></i></div>
+                        <h3>选品与服务理念</h3>
+                    </div>
+                    <p>我们坚持严选全球优质供应链，引入日本进口老年功能性鞋履、国内外知名品牌健康食品、适老服饰、居家辅具、舒适家居与日常护理用品。所有产品围绕中老年生理特点与使用习惯设计，兼顾安全、舒适、实用与美观。</p>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="ri-heart-3-line"></i></div>
+                        <h3>初心与平台</h3>
+                    </div>
+                    <p>以"让养老更有品质，让生活更省心"为初心，搭建线上线下一体化购物平台，提供一站式选购、专业适配、售后保障与贴心服务。</p>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="ri-line-chart-line"></i></div>
+                        <h3>未来发展</h3>
+                    </div>
+                    <p>将持续深耕银发产业，不断扩充高品质适老产品矩阵，优化服务体验，成为中老年群体信赖的生活伙伴。</p>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="ri-verified-badge-line"></i></div>
+                        <h3>前身背书</h3>
+                    </div>
+                    <p>前身为"家有宝贝"，拥有多年渠道运营和门店零售运营经验，秉持"科学育儿，人文关怀"理念，组建了包括儿科医生、营养师等在内的专业顾问团队。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market -->
+    <section id="market" class="market-section">
+        <div style="text-align:center; margin-bottom: 40px;">
+            <span class="section-label">Market Analysis</span>
+            <h2 class="section-title">万亿<span class="accent">蓝海市场</span></h2>
+        </div>
+        <div class="market-banner-wrap">
+            <img src="shichang.png" alt="活力老年">
+        </div>
+        <div class="market-grid">
+            <div class="market-card reveal">
+                <div class="card-header">
+                    <div class="card-icon"><i class="ri-group-line"></i></div>
+                    <h3>人口基础</h3>
+                </div>
+                <span class="number-highlight">3.23亿</span>
+                <ul class="market-list">
+                    <li>中国60岁及以上人口达3.23亿，占比超23%</li>
+                    <li>每年新增老年人口约1000万，结构持续老龄化</li>
+                    <li>月收入超1万元的高净值退休群体达2200万，消费潜力巨大</li>
+                </ul>
+            </div>
+            <div class="market-card reveal">
+                <div class="card-header">
+                    <div class="card-icon"><i class="ri-bar-chart-box-line"></i></div>
+                    <h3>市场前景</h3>
+                </div>
+                <span class="number-highlight">16.2万亿</span>
+                <ul class="market-list">
+                    <li>2026年市场规模预测达10万亿元</li>
+                    <li>2030年目标预测达16.2万亿元</li>
+                    <li>年均复合增长率(CAGR)在11.5% - 15.7%之间</li>
+                </ul>
+            </div>
+            <div class="market-card reveal">
+                <div class="card-header">
+                    <div class="card-icon"><i class="ri-swap-line"></i></div>
+                    <h3>消费趋势转型</h3>
+                </div>
+                <ul class="market-list" style="margin-top: 20px;">
+                    <li>从"生存型养老"向"品质型享老"转型</li>
+                    <li>追求健康与舒适：对功能性、高品质产品需求迫切</li>
+                    <li>注重体验与社交：热衷社交、旅游，追求精神满足</li>
+                    <li>拥抱科技与便捷：乐于接受智能家居和数字化工具</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pain Points -->
+    <section class="pain-section">
+        <div style="text-align:center; margin-bottom: 40px;">
+            <span class="section-label">Pain Points</span>
+            <h2 class="section-title">市场痛点与<span class="accent">破局机会</span></h2>
+        </div>
+        <div class="pain-grid">
+            <div class="pain-card reveal">
+                <div class="pain-side left">
+                    <h4><i class="ri-error-warning-line"></i> 产品同质化</h4>
+                    <p>同类产品重复率超65%，忽视真实需求</p>
+                </div>
+                <div class="pain-arrow"><i class="ri-arrow-right-line"></i></div>
+                <div class="pain-side right">
+                    <h4><i class="ri-check-double-line"></i> 破局</h4>
+                    <p>打造高品质、功能性差异化产品</p>
+                </div>
+            </div>
+            <div class="pain-card reveal">
+                <div class="pain-side left">
+                    <h4><i class="ri-route-line"></i> 渠道混乱</h4>
+                    <p>专业门店少，信息不对称</p>
+                </div>
+                <div class="pain-arrow"><i class="ri-arrow-right-line"></i></div>
+                <div class="pain-side right">
+                    <h4><i class="ri-store-2-line"></i> 破局</h4>
+                    <p>构建一站式线下体验店，提供专业服务</p>
+                </div>
+            </div>
+            <div class="pain-card reveal">
+                <div class="pain-side left">
+                    <h4><i class="ri-link-unlink-m"></i> 服务链条断裂</h4>
+                    <p>重产品轻服务</p>
+                </div>
+                <div class="pain-arrow"><i class="ri-arrow-right-line"></i></div>
+                <div class="pain-side right">
+                    <h4><i class="ri-leaf-line"></i> 破局</h4>
+                    <p>建立"产品+服务"生态，提供全链条解决方案</p>
+                </div>
+            </div>
+            <div class="pain-card reveal">
+                <div class="pain-side left">
+                    <h4><i class="ri-user-unfollow-line"></i> 品牌信任缺失</h4>
+                    <p>市场鱼龙混杂</p>
+                </div>
+                <div class="pain-arrow"><i class="ri-arrow-right-line"></i></div>
+                <div class="pain-side right">
+                    <h4><i class="ri-medal-line"></i> 破局</h4>
+                    <p>依托国际及知名品牌背书，重塑信任体系</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Advantages -->
+    <section id="advantages" class="core-section">
+        <div style="text-align:center; margin-bottom: 40px;">
+            <span class="section-label">Core Advantages</span>
+            <h2 class="section-title">品牌<span class="accent">核心优势</span></h2>
+        </div>
+        <div class="store-img-wrap">
+            <img src="store-img.png" alt="CALO门店">
+        </div>
+        <div class="vision-grid">
+            <div class="vision-card reveal">
+                <div class="card-header">
+                    <div class="card-icon"><i class="ri-compass-3-line"></i></div>
+                    <h3>企业愿景</h3>
+                </div>
+                <p>成为中国领先的、值得信赖的老年一站式购物生态平台。</p>
+            </div>
+            <div class="vision-card reveal">
+                <div class="card-header">
+                    <div class="card-icon"><i class="ri-flag-line"></i></div>
+                    <h3>企业使命</h3>
+                </div>
+                <p>提升中国老年人生活品质，重塑生命尊严。</p>
+            </div>
+            <div class="vision-card reveal">
+                <div class="card-header">
+                    <div class="card-icon"><i class="ri-map-pin-user-line"></i></div>
+                    <h3>品牌定位</h3>
+                </div>
+                <p>做最懂老年人需求的高品质功能性老年产品专家。</p>
+            </div>
+        </div>
+        <div class="adv-grid">
+            <div class="adv-card reveal">
+                <i class="ri-global-line adv-icon"></i>
+                <div>
+                    <h3>全球供应链整合</h3>
+                    <p>如日本进口功能鞋等全球优质产品</p>
+                </div>
+            </div>
+            <div class="adv-card reveal">
+                <i class="ri-apps-2-line adv-icon"></i>
+                <div>
+                    <h3>全品类精选</h3>
+                    <p>SKU超3000种，覆盖全场景</p>
+                </div>
+            </div>
+            <div class="adv-card reveal">
+                <i class="ri-shield-check-line adv-icon"></i>
+                <div>
+                    <h3>品质与安全保障</h3>
+                    <p>严格认证筛选，放心选购</p>
+                </div>
+            </div>
+            <div class="adv-card reveal">
+                <i class="ri-recycle-line adv-icon"></i>
+                <div>
+                    <h3>产品+服务生态闭环</h3>
+                    <p>适老化改造、健康咨询等全链条服务</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section id="products" class="products-section">
+        <div style="text-align:center; margin-bottom: 40px;">
+            <span class="section-label">Products</span>
+            <h2 class="section-title">康乐主义<span class="accent">产品矩阵</span></h2>
+            <p class="section-subtitle">覆盖衣、食、住、行全场景，提升长辈生活品质</p>
+        </div>
+
+        <div class="product-nav">
+            <div class="product-nav-item">
+                <i class="ri-t-shirt-line"></i>
+                <span>衣</span>
+            </div>
+            <div class="product-nav-item">
+                <i class="ri-restaurant-line"></i>
+                <span>食</span>
+            </div>
+            <div class="product-nav-item">
+                <i class="ri-home-smile-line"></i>
+                <span>住</span>
+            </div>
+            <div class="product-nav-item">
+                <i class="ri-car-line"></i>
+                <span>行</span>
+            </div>
+        </div>
+
+        <!-- 衣 -->
+        <!-- 衣 -->
+        <!-- 衣 -->
+        <div class="walker-section">
+            <div class="walker-title">
+                <h3 class="cat-title">衣<small>舒适与尊严</small><span class="en-deco">CLOTHING</span></h3>
+            </div>
+            <div class="walker-img-grid">
+                <div class="grid-item"><img src="shoes.png" alt="功能鞋"><div class="grid-overlay"><span>功能鞋</span></div></div>
+                <div class="grid-item"><img src="vest.png" alt="发热马甲"><div class="grid-overlay"><span>发热马甲</span></div></div>
+                <div class="grid-item"><img src="clothes.png" alt="易穿脱服饰"><div class="grid-overlay"><span>易穿脱服饰</span></div></div>
+                <div class="grid-item"><img src="wazi.png" alt="贴心暖袜"><div class="grid-overlay"><span>贴心暖袜</span></div></div>
+                <div class="grid-item"><img src="hujing.png" alt="柔软护颈"><div class="grid-overlay"><span>柔软护颈</span></div></div>
+            </div>
+            <div class="walker-grid">
+                <div class="walker-card reveal">
+                    <div class="card-top-bar orange"></div>
+                    <div class="card-body">
+                        <div class="card-prod-icon" style="background:#FFF3E0;color:#E65100"><i class="ri-footprint-line"></i></div>
+                        <h4>日本进口功能性老年鞋</h4>
+                        <p>防滑橡胶大底、宽楦设计，贴合老年人脚型，行走稳健安全。</p>
+                    </div>
+                </div>
+                <div class="walker-card reveal">
+                    <div class="card-top-bar orange"></div>
+                    <div class="card-body">
+                        <div class="card-prod-icon" style="background:#FFF3E0;color:#E65100"><i class="ri-fire-line"></i></div>
+                        <h4>智能发热科技马甲</h4>
+                        <p>远红外发热，三档温控，寒冷季节的贴心守护，保暖又舒适。</p>
+                    </div>
+                </div>
+                <div class="walker-card reveal">
+                    <div class="card-top-bar orange"></div>
+                    <div class="card-body">
+                        <div class="card-prod-icon" style="background:#FFF3E0;color:#E65100"><i class="ri-t-shirt-line"></i></div>
+                        <h4>恒温内衣&易穿脱服饰</h4>
+                        <p>隐形磁吸、侧边开合设计，穿脱轻松自如，兼顾尊严与便利。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 食 -->
+        <div class="walker-section">
+            <div class="walker-title">
+                <div class="cat-icon ri-bowl-line"></div>
+                <h3 class="cat-title">食<small>健康与营养</small><span class="en-deco">NUTRITION</span></h3>
+            </div>
+            <div class="walker-img-grid">
+                <div class="grid-item"><img src="naifen.png" alt="高钙奶粉"><div class="grid-overlay"><span>高钙奶粉</span></div></div>
+                <div class="grid-item"><img src="sws.png" alt="营养保健品"><div class="grid-overlay"><span>营养保健品</span></div></div>
+            </div>
+            <div class="walker-grid">
+                <div class="walker-card reveal">
+                    <div class="card-top-bar green"></div>
+                    <div class="card-body">
+                        <div class="card-prod-icon" style="background:#E8F5E9;color:#2E7D32"><i class="ri-bottle-line"></i></div>
+                        <h4>高钙奶粉</h4>
+                        <p>雀巢怡养益护因子配方，科学补钙，强健骨骼，每日一杯营养满分。</p>
+                    </div>
+                </div>
+                <div class="walker-card reveal">
+                    <div class="card-top-bar green"></div>
+                    <div class="card-body">
+                        <div class="card-prod-icon" style="background:#E8F5E9;color:#2E7D32"><i class="ri-capsule-line"></i></div>
+                        <h4>营养保健品</h4>
+                        <p>无糖膳食、养生茶饮，坚持天然有机无添加标准，守护健康每一天。</p>
+                    </div>
+                </div>
+                <div class="walker-card reveal">
+                    <div class="card-top-bar green"></div>
+                    <div class="card-body">
+                        <div class="card-prod-icon" style="background:#E8F5E9;color:#2E7D32"><i class="ri-bowl-line"></i></div>
+                        <h4>健康膳食理念</h4>
+                        <p>严选全球优质食材，针对中老年营养需求定制，吃得安心、吃得健康。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 住 -->
+        <div class="walker-section">
+            <div class="walker-title">
+                <h3 class="cat-title">住<small>呵护与关爱</small><span class="en-deco">LIVING</span></h3>
+            </div>
+            <div class="walker-img-grid">
+                <div class="grid-item"><img src="zunxiang.png" alt="安全保障"><div class="grid-overlay"><span>安全保障</span></div></div>
+                <div class="grid-item"><img src="zhineng.png" alt="智能陪伴"><div class="grid-overlay"><span>智能陪伴</span></div></div>
+                <div class="grid-item"><img src="bed.png" alt="生活自理"><div class="grid-overlay"><span>生活自理</span></div></div>
+                <div class="grid-item"><img src="shafa.png" alt="智能助起"><div class="grid-overlay"><span>智能助起</span></div></div>
+                <div class="grid-item"><img src="chuangdian.png" alt="AI气囊床垫"><div class="grid-overlay"><span>AI气囊床垫</span></div></div>
+            </div>
+            <div class="walker-grid">
+                <div class="walker-card reveal">
+                    <div class="card-top-bar blue"></div>
+                    <div class="card-body">
+                        <div class="card-prod-icon" style="background:#E3F2FD;color:#1565C0"><i class="ri-shield-check-line"></i></div>
+                        <h4>安全保障</h4>
+                        <p>智能监测床垫、防滑地垫，安全扶手、一键呼叫器，紧急时刻有保障。</p>
+                    </div>
+                </div>
+                <div class="walker-card reveal">
+                    <div class="card-top-bar blue"></div>
+                    <div class="card-body">
+                        <div class="card-prod-icon" style="background:#E3F2FD;color:#1565C0"><i class="ri-rocket-line"></i></div>
+                        <h4>智能助起</h4>
+                        <p>背部升降，放松摇摆，腰托加热，助力长辈轻松起身，享受舒适生活。</p>
+                    </div>
+                </div>
+                <div class="walker-card reveal">
+                    <div class="card-top-bar blue"></div>
+                    <div class="card-body">
+                        <div class="card-prod-icon" style="background:#E3F2FD;color:#1565C0"><i class="ri-hotel-bed-line"></i></div>
+                        <h4>AI气囊床垫</h4>
+                        <p>多方位支撑，全身心零压舒睡，智能调节软硬度，守护每一夜好眠。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 行 -->
+        <!-- 行 -->
+        <div class="walker-section">
+            <div class="walker-title">
+                <h3 class="cat-title">行<small>安全与便捷</small><span class="en-deco">TRAVEL</span></h3>
+            </div>
+            <div class="walker-img-wrap auto-scroll-gallery">
+                <div class="scroll-track">
+                    <img src="b1.png" alt="出行产品1">
+                    <img src="b2.png" alt="出行产品2">
+                    <img src="b3.png" alt="出行产品3">
+                    <img src="b4.png" alt="出行产品4">
+                    <img src="b5.png" alt="出行产品5">
+                    <img src="b1.png" alt="出行产品1">
+                    <img src="b2.png" alt="出行产品2">
+                    <img src="b3.png" alt="出行产品3">
+                    <img src="b4.png" alt="出行产品4">
+                    <img src="b5.png" alt="出行产品5">
+                </div>
+            </div>
+            <div class="walker-grid">
+                <div class="walker-card reveal">
+                    <div class="card-top-bar purple"></div>
+                    <div class="card-body">
+                        <div class="card-prod-icon" style="background:#F3E5F5;color:#6A1B9A"><i class="ri-star-s-line"></i></div>
+                        <h4>Space 系列</h4>
+                        <p>赛贝斯整车造型简洁大方，人字型高强度铝合金边框，结实耐用。小巧轻便，室内外行走、升降和转弯均能轻松自如。</p>
+                    </div>
+                </div>
+                <div class="walker-card reveal">
+                    <div class="card-top-bar purple"></div>
+                    <div class="card-body">
+                        <div class="card-prod-icon" style="background:#F3E5F5;color:#6A1B9A"><i class="ri-flashlight-line"></i></div>
+                        <h4>Xeon 系列</h4>
+                        <p>碳纤维边框是瑞格-艾可心最大的特点。人字形一体边框线条舒展流畅，碳纤维材质纹理独特，简约经典，持久耐用。</p>
+                    </div>
+                </div>
+                <div class="walker-card reveal">
+                    <div class="card-top-bar purple"></div>
+                    <div class="card-body">
+                        <div class="card-prod-icon" style="background:#F3E5F5;color:#6A1B9A"><i class="ri-compass-3-line"></i></div>
+                        <h4>Navigator 系列</h4>
+                        <p>专为患有关节炎或手部功能受限用户开发，兼具功能性与舒适性。固定式和旋转式两种类型，旋转支撑架三档角度可调。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <section id="timeline" class="timeline-section">
+        <div style="text-align:center; margin-bottom: 40px;">
+            <span class="section-label">Future Plan</span>
+            <h2 class="section-title">未来<span class="accent">规划</span></h2>
+        </div>
+        <div class="timeline-wrap">
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content reveal">
+                        <div class="timeline-date">短期 · 1-2年</div>
+                        <i class="ri-store-3-line"></i>
+                        <p>开设100家标杆店，打造明星产品系列，建立品牌认知与口碑。</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content reveal">
+                        <div class="timeline-date">中期 · 3-5年</div>
+                        <i class="ri-line-chart-fill"></i>
+                        <p>门店突破500家，推出自有品牌，拓展居家养老服务，构建完整生态。</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content reveal">
+                        <div class="timeline-date">长期 · 5年以上</div>
+                        <i class="ri-trophy-line"></i>
+                        <p>成为行业领导品牌，树立服务标杆，引领银发产业可持续发展。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2 class="cta-title">与康乐优品一起，迎接银龄新生活</h2>
+        <p class="cta-sub">一站式高品质老年生活生态平台，让养老更有品质，让生活更省心</p>
+        <a href="#about" class="btn-white">开启品质银龄之旅</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <img src="logo.png" alt="CALO Logo" class="footer-logo">
+        <div class="social-icons">
+            <a href="#"><i class="ri-wechat-line"></i></a>
+            <a href="#"><i class="ri-weibo-line"></i></a>
+            <a href="#"><i class="ri-phone-line"></i></a>
+        </div>
+        <p class="copyright">© 2026 CALO 康乐优品 版权所有</p>
+    </footer>
+
+    <script>
+        // Scroll reveal
+        const revealEls = document.querySelectorAll('.reveal, .card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((e, i) => {
+                if (e.isIntersecting) {
+                    setTimeout(() => {
+                        e.target.style.opacity = '1';
+                        e.target.style.transform = 'translateY(0) translateX(0)';
+                    }, i * 80);
+                    observer.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        revealEls.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(28px)';
+            el.style.transition = 'opacity 0.65s ease, transform 0.65s ease';
+            observer.observe(el);
+        });
+
+        // Header scroll effect
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            header.style.boxShadow = window.scrollY > 20
+                ? '0 4px 30px rgba(0,0,0,0.1)'
+                : '0 2px 20px rgba(0,0,0,0.06)';
+        }, { passive: true });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                const target = document.querySelector(a.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+l>
