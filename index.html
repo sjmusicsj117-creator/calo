@@ -934,10 +934,16 @@
             .timeline::before { left: 20px; }
             .timeline-dot { left: 20px; }
         }
+        @media (max-width: 900px) {
+            header { padding: 0 32px; height: 64px; }
+            .logo img { height: 28px; }
+            nav ul { gap: 24px; }
+        }
         @media (max-width: 640px) {
-            header { padding: 0 24px; }
-            nav ul { gap: 20px; }
-            nav a { font-size: 13px; }
+            header { padding: 0 16px; height: 56px; }
+            .logo img { height: 24px; }
+            nav ul { gap: 12px; }
+            nav a { font-size: 12px; }
             section { padding: 60px 20px; }
             .prod-grid { grid-template-columns: 1fr; }
             .food-grid { grid-template-columns: 1fr; }
