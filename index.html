@@ -948,7 +948,27 @@
             .prod-grid { grid-template-columns: 1fr; }
             .food-grid { grid-template-columns: 1fr; }
             .hero-content { padding: 0 20px; }
-            .scroll-track img { width: 280px; height: 210px; }
+            /* 品牌核心优势图：手机端固定宽度，不固定高度 */
+            .scroll-track img {
+                width: calc(100vw - 40px);
+                max-width: 320px;
+                height: auto;
+                min-height: 150px;
+            }
+            /* 衣/住板块图片：手机端方形横铺 */
+            .walker-img-grid {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .walker-img-grid .grid-item {
+                width: 100%;
+                min-width: unset;
+            }
+            .walker-img-grid .grid-item img {
+                height: 0;
+                padding-bottom: 100%;
+                object-fit: cover;
+            }
         }
     </style>
 </head>
